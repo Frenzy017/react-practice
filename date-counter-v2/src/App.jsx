@@ -9,8 +9,10 @@ export default function App() {
             <Counter/>
         </div>
     );
-}
 
+
+}
+console.log('test')
 function Counter() {
 
     const [step, setStep] = useState(1);
