@@ -16,6 +16,7 @@ they're main use is to preserve the information inside and pass them to other co
 - The children prop allows us to pass JSX
 into an element (besides regular props).
 - Essential tool to make reusable and configurable components.
+- It is whatever the opening tag and the closing tag of closing component
 
 🌟 How do we define prop in a component?
 Example:
