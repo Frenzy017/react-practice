@@ -1,0 +1,110 @@
+# react-notes practice / important info
+
+🌟 JSX ( JavaScript Syntax Extension)
+- Is a JavaScript extension that allows us to describe
+React's object tree using a syntax that resembles that of an HTML template.
+
+🌟 What is a Hook?
+- They're normal functions that have different features
+which could be applied directly onto components, depending on usage.
+
+🌟 What is 'props'?
+- Typically objects, which look like arguments in normal functions,
+they're main use is to preserve the information inside and pass them to other components.
+
+🌟What is children prop?
+- The children prop allows us to pass JSX
+into an element (besides regular props).
+- Essential tool to make reusable and configurable components.
+
+🌟 How do we define prop in a component?
+Example:
+ const [bill, setBill] = useState("");
+<BillInput bill={bill} onSetBill={setBill}/>
+
+- BillInput is the component, bill is the new created prop
+(can be refactored to any name)
+- {bill} is the value from from state
+- {onSetBill} is the value from the state function
+
+🌟 What is 'state'?
+- It allows React to hold interchangeable state depending on its  usage,
+it is mutable and every time it changes, the component re-renders itself.
+Main usage of it is to hold data that could be changed any moment.
+
+🌟 What is derived state?
+- state that is computed from an existing piece of state or from props
+- just regular variables, no useState
+- it works because re-rendering component will automatically
+re-calculate the derived state
+
+Example:
+const [bill, setBill] = useState("");
+const tip = bill * ((percentageOne + percentageTwo) / 2 / 100);
+
+- bill state is the single source of truth for this related data
+
+🌟 Why do we use derived state?
+- we don't want too many separate pieces of state, hard to manage
+- hard to keep them all in sync
+- every separate state update will cause to re-render = bad performance
+
+🌟 Main difference between props / state?
+- Props is immutable whereas state is.
+(Think about your component usage: does it change over time?
+
+🌟 Why do we put {} (curve brackets) inside functions?
+- So we can destructure an object or array
+which makes it easier to pass information.
+
+Example:
+const destructuring = ({ used }) => console.log(used);
+
+const properties = {
+  unused: 1,
+  used: 2,
+};
+destructuring(properties); // 2
+
+🌟 What happens if we open {} (curve brackets)?
+- We enter JavaScript mode which gives the option
+to write pure JavaScript syntax for booleans
+
+🌟 React callback function
+- It is useful when passing callbacks to optimized child components
+that rely on reference equality to prevent unnecessary render.
+
+🌟How do we update state?
+Example:
+
+function BillInput({ bill, onSetBill }) {
+  return (
+      <div
+        type="text"
+        placeholder="Bill value"
+        value={bill}
+        onChange={(e) => onSetBill(Number(e.target.value))}
+      </div>
+  );
+}
+
+- 1. We pass the props to the function & destructure them
+(Make sure to create the custom props in the outside the component)
+
+- 2. We create value which connects the bill prop and the state that is holding in it
+
+- 3. We create a onChange event which accepts an event and looks for potential
+user input that will change the onSetBill prop which is going to update the original state.
+
+- 4. The syntax {(e) => onSetBill(Number(e.target.value))} is pretty common practice in React
+to update the state.
+
+
+
+
+
+
+
+
+
+
